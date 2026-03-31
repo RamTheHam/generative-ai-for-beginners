@@ -20,7 +20,7 @@ async function findWeather(currentLocation: string, placeType: string) {
   }
 }
 
-const getCurrentWeatherFunction = {
+export const getCurrentWeatherFunction = {
   name: "findWeather",
   description: "Get the current weather in a given location",
   parameters: {

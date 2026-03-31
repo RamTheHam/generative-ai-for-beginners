@@ -1,0 +1,3 @@
+# Test-only dependencies – the scripts themselves are imported with all
+# external packages mocked, so only pytest is required to run the suite.
+pytest>=7.4.0

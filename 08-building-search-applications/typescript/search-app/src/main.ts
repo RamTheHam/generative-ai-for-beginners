@@ -12,7 +12,7 @@ const azureApiKey = process.env.AZURE_OPENAI_API_KEY || "";
  * @param vector2 The second vector.
  * @returns The cosine similarity score.
  */
-function cosineSimilarity(vector1: number[], vector2: number[]): number {
+export function cosineSimilarity(vector1: number[], vector2: number[]): number {
     if (vector1.length !== vector2.length) {
         throw new Error("Vector dimensions must match for cosine similarity calculation.");
     }

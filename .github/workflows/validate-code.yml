@@ -1,0 +1,79 @@
+name: Validate Code
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # ── Python: syntax check + unit tests ───────────────────────────────────────
+  python-tests:
+    name: Python – Syntax & Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Check Python syntax (all .py files)
+        run: |
+          find . -name "*.py" -not -path "./.git/*" \
+            -exec python -m py_compile {} +
+
+      - name: Install test dependencies
+        working-directory: 08-building-search-applications/scripts
+        run: pip install -r requirements-test.txt
+
+      - name: Run Python unit tests
+        working-directory: 08-building-search-applications/scripts
+        run: python -m pytest --tb=short -v
+
+  # ── TypeScript: search-app (cosineSimilarity) ───────────────────────────────
+  ts-search-app:
+    name: TypeScript – search-app tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 08-building-search-applications/typescript/search-app
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: 08-building-search-applications/typescript/search-app/package-lock.json
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+  # ── TypeScript: function-app (schema validation) ────────────────────────────
+  ts-function-app:
+    name: TypeScript – function-app tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 11-integrating-with-function-calling/typescript/function-app
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: 11-integrating-with-function-calling/typescript/function-app/package-lock.json
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
