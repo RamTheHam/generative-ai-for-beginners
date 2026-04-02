@@ -35,6 +35,11 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
     <span class="nav-tooltip">Config</span>
   </button>
+
+  <button class="nav-btn" data-view="about" title="">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <span class="nav-tooltip">About</span>
+  </button>
 </nav>
 
 <!-- ── Main ───────────────────────────────────────────────────────────────── -->
@@ -243,6 +248,144 @@
           </div>
           <div id="cfg-rules"></div>
           <button class="btn btn-secondary btn-sm mt-8" id="btn-reset-rules">Reset to defaults</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── View: About ────────────────────────────────────────────────────── -->
+  <div id="view-about" class="view">
+    <div class="view-header">
+      <span class="view-title">About</span>
+      <span class="view-sub">PE Signal Engine — v1</span>
+    </div>
+    <div class="view-body">
+      <div class="about-wrap">
+
+        <div class="about-repo-bar">
+          <span class="about-repo-label">Repository</span>
+          <a class="about-repo-link" href="https://github.com/RamTheHam/generative-ai-for-beginners/tree/claude/linkedin-exec-finder-build-bCyZH/pe-signal-engine" target="_blank">
+            RamTheHam/generative-ai-for-beginners
+          </a>
+          <span class="about-repo-branch">branch: claude/linkedin-exec-finder-build-bCyZH</span>
+          <span class="about-repo-path">path: /pe-signal-engine</span>
+        </div>
+
+        <div class="about-section">
+          <h2 class="about-h2">Why this was built</h2>
+          <p>Private equity deal origination depends on finding the right operators at the right moment. Most firms do this manually — searching LinkedIn, reading press releases, asking around — and the output is inconsistent, not ranked, and impossible to scale.</p>
+          <p>This tool was built to replace that ad-hoc process with a structured, repeatable intelligence system. The market constantly emits signals about which executives are moving, speaking, joining boards, or running companies relevant to PE value creation. This engine collects those signals, scores them, and surfaces a ranked shortlist with evidence — so time goes into outreach and judgment, not research.</p>
+          <p>The first version is scoped to the <strong>Nordic market</strong> (Sweden, Norway, Denmark, Finland) across seven high-priority PE sectors: Vertical SaaS, Behavioural Health &amp; Outpatient Specialty, Testing/Inspection/Certification, Environmental &amp; Compliance Services, Infrastructure-linked Field Services, IT Services (AI/Cloud/Cybersecurity), and Revenue Cycle Management. The design is intentionally pan-European — expanding geography requires only changing search parameters, not the code.</p>
+        </div>
+
+        <div class="about-section">
+          <h2 class="about-h2">How to use it</h2>
+
+          <div class="about-step">
+            <div class="about-step-num">1</div>
+            <div>
+              <strong>Config</strong> (bottom of left nav) — Add your API keys before running a live search. Apollo powers people search (~$49/mo). Firecrawl scrapes public web pages (usage-based). Anthropic generates AI dossiers (pay-per-use). The app works immediately without any keys using the pre-loaded demo data.
+            </div>
+          </div>
+
+          <div class="about-step">
+            <div class="about-step-num">2</div>
+            <div>
+              <strong>Search Setup</strong> (magnifying glass) — Type company names, adjust sectors and countries, choose a lane (Transition, Successor, or Both), toggle data sources, and hit Start run.
+            </div>
+          </div>
+
+          <div class="about-step">
+            <div class="about-step-num">3</div>
+            <div>
+              <strong>Run Monitor</strong> (bar chart) — Watch the pipeline move through five stages: Discovery → Enrichment → Web Enrichment → Scoring → Complete.
+            </div>
+          </div>
+
+          <div class="about-step">
+            <div class="about-step-num">4</div>
+            <div>
+              <strong>Executives</strong> (grid) — The main working view. A dense, sortable table. Click any row to open the detail drawer. Key columns: Total score (0–100), Trans (transition signal), PE Fit (value creation relevance), Net (network depth), Reach (contactability), Contact (email/phone coverage), Last signal (recency).
+            </div>
+          </div>
+
+          <div class="about-step">
+            <div class="about-step-num">5</div>
+            <div>
+              <strong>Executive Drawer</strong> — Four tabs per person. <em>Evidence</em>: chronological signal timeline. <em>Graph</em>: relationship map of companies, boards, and events. <em>Dossier</em>: AI-written PE briefing with outreach angle and talking points (requires Anthropic key). <em>Outreach</em>: log your contact attempts.
+            </div>
+          </div>
+        </div>
+
+        <div class="about-section">
+          <h2 class="about-h2">Advantages</h2>
+          <ul class="about-list">
+            <li><strong>Signal-based, not list-based.</strong> Every person has scored evidence behind them, not just a job title.</li>
+            <li><strong>Two lanes in one view.</strong> Transition candidates (available now) and strategic successors (worth tracking) are scored and filtered separately but shown together.</li>
+            <li><strong>Tool-agnostic design.</strong> Every data source is a plug-in adapter. Switching from Scrupp to PhantomBuster, or from manual enrichment to BoardEx, requires no redesign — only a new adapter file.</li>
+            <li><strong>Editable scoring.</strong> All score rules and weights are exposed in Config. You can tune the model to your thesis without touching code.</li>
+            <li><strong>AI dossiers on demand.</strong> One click generates a structured briefing — summary, PE fit, transition hypothesis, best role, outreach angle, and talking points — written by Claude from the evidence collected.</li>
+            <li><strong>Cheap to run.</strong> The full v1 stack (Apollo basic + Firecrawl) costs under $60/month. No enterprise contracts needed to start.</li>
+            <li><strong>Upgradeable without rewriting.</strong> BoardEx, ExecAtlas, RelSci, and Affinity adapter slots are already in the codebase. They plug straight in when the budget allows.</li>
+          </ul>
+        </div>
+
+        <div class="about-section">
+          <h2 class="about-h2">Limitations</h2>
+          <ul class="about-list">
+            <li><strong>Data quality depends on sources.</strong> Apollo has decent Nordic coverage but it is not complete. Firecrawl depends on public web presence — executives with low online visibility will score lower regardless of their actual seniority.</li>
+            <li><strong>No real-time monitoring.</strong> This is a run-based system. It does not watch for changes automatically. You need to trigger a new run to refresh signals.</li>
+            <li><strong>Relationship graph is shallow without BoardEx.</strong> The graph is built from public evidence only — events, press, LinkedIn. It will not show deep board-level connection data that BoardEx or RelSci provide.</li>
+            <li><strong>Contact data is imperfect.</strong> Expect email coverage for roughly 50–70% of senior Nordic targets. Phone coverage is lower.</li>
+            <li><strong>Dossiers need review.</strong> AI-generated dossiers are a starting point, not a finished product. Always review before using in an outreach context.</li>
+            <li><strong>No CRM sync yet.</strong> Records live inside the app. Export to CSV works. HubSpot, Affinity, and Google Drive sync are planned for Phase 2.</li>
+          </ul>
+        </div>
+
+        <div class="about-section">
+          <h2 class="about-h2">What can be built and changed next</h2>
+
+          <p class="about-phase-label">Phase 2 — Near term</p>
+          <ul class="about-list">
+            <li>Automated monitoring: watch a saved list and alert when new signals appear</li>
+            <li>CRM sync: push executives and dossiers to HubSpot, Pipedrive, or Google Drive</li>
+            <li>Email draft generation: write a first-contact email from the dossier and outreach angle</li>
+            <li>Browser extension: capture LinkedIn profiles directly without exporting CSV</li>
+            <li>Better deduplication: merge executives found by multiple sources into one record</li>
+          </ul>
+
+          <p class="about-phase-label">Phase 3 — Premium graph</p>
+          <ul class="about-list">
+            <li>BoardEx / ExecAtlas / RelSci adapters: deep board composition and career history</li>
+            <li>Affinity integration: import your firm's existing relationship graph as warm-path edges</li>
+            <li>Portfolio fit scoring: score executives against specific portfolio company mandates</li>
+            <li>Event tracker: automatically ingest speaker lists from Nordic PE-relevant conferences</li>
+            <li>Pan-European expansion: extend to DACH, Benelux, and UK</li>
+          </ul>
+
+          <p class="about-phase-label">Longer term</p>
+          <ul class="about-list">
+            <li>Proactive origination: the system proposes new target companies based on sector signals, not just enriches a list you bring</li>
+            <li>Succession prediction: model which executives at a target company are likely to move in the next 6–12 months</li>
+            <li>Network pathfinding: given a target executive, find the shortest warm introduction path through your firm's known relationships</li>
+          </ul>
+        </div>
+
+        <div class="about-section">
+          <h2 class="about-h2">Technical stack</h2>
+          <div class="about-stack-grid">
+            <div class="about-stack-item"><span class="about-stack-label">Backend</span>Python 3.11+ · FastAPI · SQLAlchemy · SQLite (upgradeable to Postgres)</div>
+            <div class="about-stack-item"><span class="about-stack-label">Frontend</span>Vanilla JS · D3.js (graph) · CSS custom properties · No framework</div>
+            <div class="about-stack-item"><span class="about-stack-label">AI</span>Claude claude-sonnet-4-6 via Anthropic API (dossier generation)</div>
+            <div class="about-stack-item"><span class="about-stack-label">Data sources</span>Apollo · Scrupp · PhantomBuster · Firecrawl · Manual import</div>
+            <div class="about-stack-item"><span class="about-stack-label">Future sources</span>BoardEx · ExecAtlas · RelSci · Affinity (adapter slots ready)</div>
+            <div class="about-stack-item"><span class="about-stack-label">Cost to run</span>Under $60/month on v1 stack (Apollo basic + Firecrawl usage)</div>
+          </div>
+        </div>
+
+        <div class="about-footer">
+          Built with FastAPI, SQLite, and Claude · Designed to be replaced piece by piece as the budget grows.
         </div>
 
       </div>

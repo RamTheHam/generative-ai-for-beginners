@@ -398,3 +398,87 @@ td.co-cell { color: var(--text-2); max-width: 140px; overflow: hidden; text-over
   .setup-grid { grid-template-columns: 1fr; }
   .run-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ── About view ───────────────────────────────────────────────────────────── */
+.about-wrap { max-width: 760px; }
+
+.about-repo-bar {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  background: var(--text-1); color: #fff;
+  border-radius: var(--r2); padding: 10px 16px;
+  margin-bottom: 24px; font-size: 12px;
+}
+.about-repo-label { font-weight: 700; color: var(--teal); font-size: 10px;
+  text-transform: uppercase; letter-spacing: .5px; }
+.about-repo-link { color: #fff; text-decoration: none; font-weight: 600; }
+.about-repo-link:hover { color: var(--teal); }
+.about-repo-branch { background: rgba(255,255,255,.1); padding: 2px 8px;
+  border-radius: 10px; font-size: 11px; font-family: var(--mono); }
+.about-repo-path { color: rgba(255,255,255,.5); font-size: 11px; font-family: var(--mono); }
+
+.about-section { margin-bottom: 28px; }
+
+.about-h2 {
+  font-size: 13px; font-weight: 700; color: var(--teal-dim);
+  text-transform: uppercase; letter-spacing: .4px;
+  border-bottom: 1px solid var(--border); padding-bottom: 6px;
+  margin-bottom: 12px;
+}
+
+.about-section p {
+  font-size: 12px; line-height: 1.75; color: var(--text-1);
+  margin-bottom: 10px;
+}
+
+.about-step {
+  display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;
+}
+.about-step-num {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--teal); color: #fff;
+  font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.about-step > div { font-size: 12px; line-height: 1.7; color: var(--text-1); }
+
+.about-list {
+  padding-left: 0; list-style: none; margin: 0 0 10px;
+}
+.about-list li {
+  font-size: 12px; line-height: 1.7; color: var(--text-1);
+  padding: 5px 0 5px 16px; border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.about-list li::before {
+  content: "→"; position: absolute; left: 0; color: var(--teal);
+}
+
+.about-phase-label {
+  font-size: 11px; font-weight: 700; color: var(--text-3);
+  text-transform: uppercase; letter-spacing: .4px;
+  margin: 14px 0 6px;
+}
+
+.about-stack-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+}
+.about-stack-item {
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 10px 12px;
+  font-size: 12px; line-height: 1.5; color: var(--text-1);
+}
+.about-stack-label {
+  display: block; font-size: 10px; font-weight: 700; color: var(--teal-dim);
+  text-transform: uppercase; letter-spacing: .4px; margin-bottom: 3px;
+}
+
+.about-footer {
+  font-size: 11px; color: var(--text-3);
+  border-top: 1px solid var(--border); padding-top: 16px; margin-top: 8px;
+}
+
+@media (max-width: 900px) {
+  .about-stack-grid { grid-template-columns: 1fr; }
+  .about-repo-bar { gap: 8px; }
+}
